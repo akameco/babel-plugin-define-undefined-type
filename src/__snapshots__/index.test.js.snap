@@ -11,6 +11,28 @@ type X = A;
 "
 `;
 
+exports[`1. defined-undefined-type 2`] = `
+"
+type X = A
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"app/counter/A\\";
+type X = A;
+"
+`;
+
+exports[`1. defined-undefined-type 3`] = `
+"
+type X = A
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"counter/A\\";
+type X = A;
+"
+`;
+
 exports[`2. defined-undefined-type 1`] = `
 "
 type X = Action
@@ -18,6 +40,28 @@ type X = Action
       ↓ ↓ ↓ ↓ ↓ ↓
 
 type Action = \\"Action\\";
+type X = Action;
+"
+`;
+
+exports[`2. defined-undefined-type 2`] = `
+"
+type X = Action
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type Action = \\"app/counter/Action\\";
+type X = Action;
+"
+`;
+
+exports[`2. defined-undefined-type 3`] = `
+"
+type X = Action
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type Action = \\"counter/Action\\";
 type X = Action;
 "
 `;
@@ -36,6 +80,34 @@ type X = A;
 "
 `;
 
+exports[`3. defined-undefined-type 2`] = `
+"
+type Y = B;
+type X = A;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type B = \\"app/counter/B\\";
+type Y = B;
+type A = \\"app/counter/A\\";
+type X = A;
+"
+`;
+
+exports[`3. defined-undefined-type 3`] = `
+"
+type Y = B;
+type X = A;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type B = \\"counter/B\\";
+type Y = B;
+type A = \\"counter/A\\";
+type X = A;
+"
+`;
+
 exports[`4. defined-undefined-type 1`] = `
 "
 type X = A | B
@@ -44,6 +116,30 @@ type X = A | B
 
 type A = \\"A\\";
 type B = \\"B\\";
+type X = A | B;
+"
+`;
+
+exports[`4. defined-undefined-type 2`] = `
+"
+type X = A | B
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"app/counter/A\\";
+type B = \\"app/counter/B\\";
+type X = A | B;
+"
+`;
+
+exports[`4. defined-undefined-type 3`] = `
+"
+type X = A | B
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"counter/A\\";
+type B = \\"counter/B\\";
 type X = A | B;
 "
 `;
@@ -61,6 +157,32 @@ type X = A | B;
 "
 `;
 
+exports[`5. defined-undefined-type 2`] = `
+"
+type A = 'A'
+type X = A | B
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = 'A';
+type B = 'app/counter/B';
+type X = A | B;
+"
+`;
+
+exports[`5. defined-undefined-type 3`] = `
+"
+type A = 'A'
+type X = A | B
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = 'A';
+type B = 'counter/B';
+type X = A | B;
+"
+`;
+
 exports[`6. defined-undefined-type 1`] = `
 "
 type X = { type: ActionX };
@@ -68,6 +190,28 @@ type X = { type: ActionX };
       ↓ ↓ ↓ ↓ ↓ ↓
 
 type ActionX = \\"ActionX\\";
+type X = { type: ActionX };
+"
+`;
+
+exports[`6. defined-undefined-type 2`] = `
+"
+type X = { type: ActionX };
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type ActionX = \\"app/counter/ActionX\\";
+type X = { type: ActionX };
+"
+`;
+
+exports[`6. defined-undefined-type 3`] = `
+"
+type X = { type: ActionX };
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type ActionX = \\"counter/ActionX\\";
 type X = { type: ActionX };
 "
 `;
@@ -80,6 +224,30 @@ type X = { type: A | B }
 
 type A = \\"A\\";
 type B = \\"B\\";
+type X = { type: A | B };
+"
+`;
+
+exports[`7. defined-undefined-type 2`] = `
+"
+type X = { type: A | B }
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"app/counter/A\\";
+type B = \\"app/counter/B\\";
+type X = { type: A | B };
+"
+`;
+
+exports[`7. defined-undefined-type 3`] = `
+"
+type X = { type: A | B }
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"counter/A\\";
+type B = \\"counter/B\\";
 type X = { type: A | B };
 "
 `;
@@ -100,6 +268,38 @@ type Action = X | Y;
 "
 `;
 
+exports[`8. defined-undefined-type 2`] = `
+"
+type X = { type: A }
+type Y = { type: B }
+type Action = X | Y
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"app/counter/A\\";
+type X = { type: A };
+type B = \\"app/counter/B\\";
+type Y = { type: B };
+type Action = X | Y;
+"
+`;
+
+exports[`8. defined-undefined-type 3`] = `
+"
+type X = { type: A }
+type Y = { type: B }
+type Action = X | Y
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"counter/A\\";
+type X = { type: A };
+type B = \\"counter/B\\";
+type Y = { type: B };
+type Action = X | Y;
+"
+`;
+
 exports[`9. defined-undefined-type 1`] = `
 "
 type Action = { type: ADD } | { type: INCREMENT }
@@ -108,6 +308,30 @@ type Action = { type: ADD } | { type: INCREMENT }
 
 type ADD = \\"ADD\\";
 type INCREMENT = \\"INCREMENT\\";
+type Action = { type: ADD } | { type: INCREMENT };
+"
+`;
+
+exports[`9. defined-undefined-type 2`] = `
+"
+type Action = { type: ADD } | { type: INCREMENT }
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type ADD = \\"app/counter/ADD\\";
+type INCREMENT = \\"app/counter/INCREMENT\\";
+type Action = { type: ADD } | { type: INCREMENT };
+"
+`;
+
+exports[`9. defined-undefined-type 3`] = `
+"
+type Action = { type: ADD } | { type: INCREMENT }
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type ADD = \\"counter/ADD\\";
+type INCREMENT = \\"counter/INCREMENT\\";
 type Action = { type: ADD } | { type: INCREMENT };
 "
 `;

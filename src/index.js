@@ -1,4 +1,5 @@
 // @flow
+import p from 'path'
 import flowSyntax from 'babel-plugin-syntax-flow'
 import * as t from 'babel-types'
 import template from 'babel-template'
@@ -11,25 +12,33 @@ type Node = {
 type Path = {
   type: string,
   node: Node,
-  [key: string]: any
+  [key: string]: any,
+  get(key: string): Node
 }
 
 type File = Object
 
 type State = {
+  opts: Object,
   file: File
 }
 
 const babylonOpts = { plugins: ['flow'] }
 
-const typeDefineBuilder = template(`type ID = NAME`, babylonOpts)
+const typeDefineBuilder = template(`type NAME = VALUE`, babylonOpts)
 
-const UNIQ = Symbol('defined-undefined-type')
+const KEY = Symbol('defined-undefined-type')
 
-const createDefineAST = name =>
+function getPrefix({ opts: { filename } }: File, removePrefix: string = '') {
+  const file = p.relative(process.cwd(), filename)
+  const dirname = p.dirname(file)
+  return (dirname + '/').replace(new RegExp(`^${removePrefix}/`), '')
+}
+
+const createDefineAST = (name: string, value: string) =>
   typeDefineBuilder({
-    ID: t.identifier(name),
-    NAME: t.stringLiteral(name)
+    NAME: t.identifier(name),
+    VALUE: t.stringLiteral(value)
   })
 
 export default () => {
@@ -37,16 +46,16 @@ export default () => {
     inherits: flowSyntax,
     name: 'defined-undefined-type',
     pre(file: File) {
-      if (!file.get(UNIQ)) {
-        file.set(UNIQ, new Set())
+      if (!file.get(KEY)) {
+        file.set(KEY, new Set())
       }
     },
     visitor: {
-      TypeAlias(path: Node, { file }: State) {
-        const definedTypes: Set<string> = file.get(UNIQ)
+      TypeAlias(path: Path, state: State) {
+        const { file, opts } = state
+        const definedTypes: Set<string> = file.get(KEY)
 
-        const id = path.get('id').node.name
-        definedTypes.add(id)
+        definedTypes.add(path.get('id').node.name)
 
         function insertGenericType(nodePath: Path) {
           const name = nodePath.get('id').node.name
@@ -54,7 +63,11 @@ export default () => {
             return
           }
 
-          const ast = createDefineAST(name)
+          const prefix = opts.usePrefix
+            ? getPrefix(file, opts.removePrefix)
+            : ''
+          const value = prefix + name
+          const ast = createDefineAST(name, value)
 
           definedTypes.add(name)
           path.insertBefore(ast)
@@ -84,8 +97,7 @@ export default () => {
           }
         }
 
-        const rightPath = path.get('right')
-        insert(rightPath)
+        insert(path.get('right'))
       }
     }
   }
