@@ -22,26 +22,32 @@ $ npm install --save-dev babel-plugin-define-undefined-type
 
 ## Examples
 
-### In:
+### General
+
+#### In:
 
 ```js
 type X = A;
 ```
 
-### Out:
+#### Out:
 
 ```js
 type A = "A";
 type X = A;
 ```
 
-### In:
+---
+
+### Union
+
+#### In:
 
 ```js
 type Action = { type: ADD | INCREMENT };
 ```
 
-### Out:
+#### Out:
 
 ```js
 type ADD = "ADD";
@@ -49,13 +55,15 @@ type INCREMENT = "INCREMENT";
 type Action = { type: ADD | INCREMENT };
 ```
 
-### In:
+---
+
+#### In:
 
 ```js
 type Action = { type: ADD } | { type: INCREMENT }
 ```
 
-### Out:
+#### Out:
 
 ```js
 type ADD = "ADD";
