@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-define-undefined-type",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "define string literal type",
   "license": "MIT",
   "repository": "akameco/babel-plugin-define-undefined-type",
