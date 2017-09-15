@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`1. defined-undefined-type 1`] = `
+exports[`1. define-undefined-type 1`] = `
 "
 type X = A
 
@@ -11,7 +11,7 @@ type X = A;
 "
 `;
 
-exports[`1. defined-undefined-type 2`] = `
+exports[`1. define-undefined-type 2`] = `
 "
 type X = A
 
@@ -22,7 +22,7 @@ type X = A;
 "
 `;
 
-exports[`1. defined-undefined-type 3`] = `
+exports[`1. define-undefined-type 3`] = `
 "
 type X = A
 
@@ -33,7 +33,7 @@ type X = A;
 "
 `;
 
-exports[`2. defined-undefined-type 1`] = `
+exports[`2. define-undefined-type 1`] = `
 "
 type X = Action
 
@@ -44,7 +44,7 @@ type X = Action;
 "
 `;
 
-exports[`2. defined-undefined-type 2`] = `
+exports[`2. define-undefined-type 2`] = `
 "
 type X = Action
 
@@ -55,7 +55,7 @@ type X = Action;
 "
 `;
 
-exports[`2. defined-undefined-type 3`] = `
+exports[`2. define-undefined-type 3`] = `
 "
 type X = Action
 
@@ -66,7 +66,7 @@ type X = Action;
 "
 `;
 
-exports[`3. defined-undefined-type 1`] = `
+exports[`3. define-undefined-type 1`] = `
 "
 type Y = B;
 type X = A;
@@ -80,7 +80,7 @@ type X = A;
 "
 `;
 
-exports[`3. defined-undefined-type 2`] = `
+exports[`3. define-undefined-type 2`] = `
 "
 type Y = B;
 type X = A;
@@ -94,7 +94,7 @@ type X = A;
 "
 `;
 
-exports[`3. defined-undefined-type 3`] = `
+exports[`3. define-undefined-type 3`] = `
 "
 type Y = B;
 type X = A;
@@ -108,7 +108,7 @@ type X = A;
 "
 `;
 
-exports[`4. defined-undefined-type 1`] = `
+exports[`4. define-undefined-type 1`] = `
 "
 type X = A | B
 
@@ -120,7 +120,7 @@ type X = A | B;
 "
 `;
 
-exports[`4. defined-undefined-type 2`] = `
+exports[`4. define-undefined-type 2`] = `
 "
 type X = A | B
 
@@ -132,7 +132,7 @@ type X = A | B;
 "
 `;
 
-exports[`4. defined-undefined-type 3`] = `
+exports[`4. define-undefined-type 3`] = `
 "
 type X = A | B
 
@@ -144,7 +144,7 @@ type X = A | B;
 "
 `;
 
-exports[`5. defined-undefined-type 1`] = `
+exports[`5. define-undefined-type 1`] = `
 "
 type A = 'A'
 type X = A | B
@@ -157,7 +157,7 @@ type X = A | B;
 "
 `;
 
-exports[`5. defined-undefined-type 2`] = `
+exports[`5. define-undefined-type 2`] = `
 "
 type A = 'A'
 type X = A | B
@@ -170,7 +170,7 @@ type X = A | B;
 "
 `;
 
-exports[`5. defined-undefined-type 3`] = `
+exports[`5. define-undefined-type 3`] = `
 "
 type A = 'A'
 type X = A | B
@@ -183,7 +183,7 @@ type X = A | B;
 "
 `;
 
-exports[`6. defined-undefined-type 1`] = `
+exports[`6. define-undefined-type 1`] = `
 "
 type X = { type: ActionX };
 
@@ -194,7 +194,7 @@ type X = { type: ActionX };
 "
 `;
 
-exports[`6. defined-undefined-type 2`] = `
+exports[`6. define-undefined-type 2`] = `
 "
 type X = { type: ActionX };
 
@@ -205,7 +205,7 @@ type X = { type: ActionX };
 "
 `;
 
-exports[`6. defined-undefined-type 3`] = `
+exports[`6. define-undefined-type 3`] = `
 "
 type X = { type: ActionX };
 
@@ -216,7 +216,7 @@ type X = { type: ActionX };
 "
 `;
 
-exports[`7. defined-undefined-type 1`] = `
+exports[`7. define-undefined-type 1`] = `
 "
 type X = { type: A | B }
 
@@ -228,7 +228,7 @@ type X = { type: A | B };
 "
 `;
 
-exports[`7. defined-undefined-type 2`] = `
+exports[`7. define-undefined-type 2`] = `
 "
 type X = { type: A | B }
 
@@ -240,7 +240,7 @@ type X = { type: A | B };
 "
 `;
 
-exports[`7. defined-undefined-type 3`] = `
+exports[`7. define-undefined-type 3`] = `
 "
 type X = { type: A | B }
 
@@ -252,7 +252,7 @@ type X = { type: A | B };
 "
 `;
 
-exports[`8. defined-undefined-type 1`] = `
+exports[`8. define-undefined-type 1`] = `
 "
 type X = { type: A }
 type Y = { type: B }
@@ -268,7 +268,7 @@ type Action = X | Y;
 "
 `;
 
-exports[`8. defined-undefined-type 2`] = `
+exports[`8. define-undefined-type 2`] = `
 "
 type X = { type: A }
 type Y = { type: B }
@@ -284,7 +284,7 @@ type Action = X | Y;
 "
 `;
 
-exports[`8. defined-undefined-type 3`] = `
+exports[`8. define-undefined-type 3`] = `
 "
 type X = { type: A }
 type Y = { type: B }
@@ -300,7 +300,7 @@ type Action = X | Y;
 "
 `;
 
-exports[`9. defined-undefined-type 1`] = `
+exports[`9. define-undefined-type 1`] = `
 "
 type Action = { type: ADD } | { type: INCREMENT }
 
@@ -312,7 +312,7 @@ type Action = { type: ADD } | { type: INCREMENT };
 "
 `;
 
-exports[`9. defined-undefined-type 2`] = `
+exports[`9. define-undefined-type 2`] = `
 "
 type Action = { type: ADD } | { type: INCREMENT }
 
@@ -324,7 +324,7 @@ type Action = { type: ADD } | { type: INCREMENT };
 "
 `;
 
-exports[`9. defined-undefined-type 3`] = `
+exports[`9. define-undefined-type 3`] = `
 "
 type Action = { type: ADD } | { type: INCREMENT }
 
