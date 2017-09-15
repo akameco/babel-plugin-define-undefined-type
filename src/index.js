@@ -1,5 +1,5 @@
 // @flow
-import p from 'path'
+import { relative, join, dirname } from 'path'
 import flowSyntax from 'babel-plugin-syntax-flow'
 import * as t from 'babel-types'
 import template from 'babel-template'
@@ -30,9 +30,8 @@ const typeDefineBuilder = template(`type NAME = VALUE`, babylonOpts)
 const KEY = Symbol('define-undefined-type')
 
 function getPrefix({ opts: { filename } }: File, removePrefix: string = '') {
-  const file = p.relative(p.join(process.cwd(), removePrefix), filename)
-  const dirname = p.dirname(file)
-  return dirname + '/'
+  const file = relative(join(process.cwd(), removePrefix), filename)
+  return dirname(file) + '/'
 }
 
 const createDefineAST = (name: string, value: string) =>
@@ -51,14 +50,14 @@ export default () => {
       }
     },
     visitor: {
-      TypeAlias(path: Path, state: State) {
+      TypeAlias(rootPath: Path, state: State) {
         const { file, opts } = state
         const definedTypes: Set<string> = file.get(KEY)
 
-        definedTypes.add(path.get('id').node.name)
+        definedTypes.add(rootPath.get('id').node.name)
 
-        function insertGenericType(nodePath: Path) {
-          const name = nodePath.get('id').node.name
+        function insertGenericType(path: Path) {
+          const name = path.get('id').node.name
           if (!name || definedTypes.has(name)) {
             return
           }
@@ -70,34 +69,32 @@ export default () => {
           const ast = createDefineAST(name, value)
 
           definedTypes.add(name)
-          path.insertBefore(ast)
+          rootPath.insertBefore(ast)
         }
 
-        function insertUnionType(unionPath: Path) {
-          const typesPath = unionPath.get('types')
-          for (const typePath of typesPath) {
-            insert(typePath)
+        function insertUnionType(path: Path) {
+          for (const p of path.get('types')) {
+            insert(p)
           }
         }
 
-        function insertObjectType(objPath: Path) {
-          const properties = objPath.get('properties')
-          for (const propPath of properties) {
-            insert(propPath.get('value'))
+        function insertObjectType(path: Path) {
+          for (const p of path.get('properties')) {
+            insert(p.get('value'))
           }
         }
 
-        function insert(targetPath: Path) {
-          if (targetPath.isGenericTypeAnnotation()) {
-            insertGenericType(targetPath)
-          } else if (targetPath.isUnionTypeAnnotation()) {
-            insertUnionType(targetPath)
-          } else if (targetPath.isObjectTypeAnnotation()) {
-            insertObjectType(targetPath)
+        function insert(path: Path) {
+          if (path.isGenericTypeAnnotation()) {
+            insertGenericType(path)
+          } else if (path.isUnionTypeAnnotation()) {
+            insertUnionType(path)
+          } else if (path.isObjectTypeAnnotation()) {
+            insertObjectType(path)
           }
         }
 
-        insert(path.get('right'))
+        insert(rootPath.get('right'))
       }
     }
   }
