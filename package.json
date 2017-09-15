@@ -1,0 +1,52 @@
+{
+  "name": "babel-plugin-define-undefined-type",
+  "version": "0.0.0",
+  "description": "define string literal type",
+  "license": "MIT",
+  "repository": "akameco/babel-plugin-define-undefined-type",
+  "author": {
+    "name": "akameco",
+    "email": "akameco.t@gmail.com",
+    "url": "akameco.github.io"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "prettier": "prettier --write '**/*.js'",
+    "prebuild": "rimraf lib",
+    "build": "babel src -d lib --ignore *.test.js",
+    "postbuild": "flow-copy-source --ignore *.test.js src lib",
+    "build:watch": "npm run build -- --watch",
+    "lint": "eslint src/",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "lint-staged": {
+    "*.js": ["prettier", "lint", "test", "git add"],
+    "*.json": ["prettier", "git add"]
+  },
+  "files": ["lib"],
+  "keywords": ["babel"],
+  "dependencies": {
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-template": "^6.26.0",
+    "babel-types": "^6.26.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-log": "^2.0.0",
+    "babel-plugin-tester": "^4.0.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^4.6.1",
+    "eslint-config-precure": "^0.8.1",
+    "flow-bin": "^0.54.1",
+    "husky": "^0.14.3",
+    "jest": "^21.0.2",
+    "lint-staged": "^4.1.3",
+    "prettier": "^1.6.1"
+  }
+}

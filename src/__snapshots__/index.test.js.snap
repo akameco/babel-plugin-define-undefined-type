@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`1. defined-undefined-type 1`] = `
+"
+type X = A
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"A\\";
+type X = A;
+"
+`;
+
+exports[`2. defined-undefined-type 1`] = `
+"
+type X = Action
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type Action = \\"Action\\";
+type X = Action;
+"
+`;
+
+exports[`3. defined-undefined-type 1`] = `
+"
+type Y = B;
+type X = A;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type B = \\"B\\";
+type Y = B;
+type A = \\"A\\";
+type X = A;
+"
+`;
+
+exports[`4. defined-undefined-type 1`] = `
+"
+type X = A | B
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"A\\";
+type B = \\"B\\";
+type X = A | B;
+"
+`;
+
+exports[`5. defined-undefined-type 1`] = `
+"
+type A = 'A'
+type X = A | B
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = 'A';
+type B = 'B';
+type X = A | B;
+"
+`;
+
+exports[`6. defined-undefined-type 1`] = `
+"
+type X = { type: ActionX };
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type ActionX = \\"ActionX\\";
+type X = { type: ActionX };
+"
+`;
+
+exports[`7. defined-undefined-type 1`] = `
+"
+type X = { type: A | B }
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"A\\";
+type B = \\"B\\";
+type X = { type: A | B };
+"
+`;
+
+exports[`8. defined-undefined-type 1`] = `
+"
+type X = { type: A }
+type Y = { type: B }
+type Action = X | Y
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type A = \\"A\\";
+type X = { type: A };
+type B = \\"B\\";
+type Y = { type: B };
+type Action = X | Y;
+"
+`;
+
+exports[`9. defined-undefined-type 1`] = `
+"
+type Action = { type: ADD } | { type: INCREMENT }
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+type ADD = \\"ADD\\";
+type INCREMENT = \\"INCREMENT\\";
+type Action = { type: ADD } | { type: INCREMENT };
+"
+`;
