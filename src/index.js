@@ -27,7 +27,7 @@ const babylonOpts = { plugins: ['flow'] }
 
 const typeDefineBuilder = template(`type NAME = VALUE`, babylonOpts)
 
-const KEY = Symbol('defined-undefined-type')
+const KEY = Symbol('define-undefined-type')
 
 function getPrefix({ opts: { filename } }: File, removePrefix: string = '') {
   const file = p.relative(p.join(process.cwd(), removePrefix), filename)
@@ -44,7 +44,7 @@ const createDefineAST = (name: string, value: string) =>
 export default () => {
   return {
     inherits: flowSyntax,
-    name: 'defined-undefined-type',
+    name: 'define-undefined-type',
     pre(file: File) {
       if (!file.get(KEY)) {
         file.set(KEY, new Set())
