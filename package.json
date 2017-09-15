@@ -29,7 +29,15 @@
     "*.json": ["prettier", "git add"]
   },
   "files": ["lib"],
-  "keywords": ["babel"],
+  "keywords": [
+    "babel",
+    "s2s",
+    "flow",
+    "flowtype",
+    "undefined",
+    "type",
+    "define"
+  ],
   "dependencies": {
     "babel-plugin-syntax-flow": "^6.18.0",
     "babel-template": "^6.26.0",
@@ -45,6 +53,7 @@
     "eslint": "^4.6.1",
     "eslint-config-precure": "^0.8.1",
     "flow-bin": "^0.54.1",
+    "flow-copy-source": "^1.2.1",
     "husky": "^0.14.3",
     "jest": "^21.0.2",
     "lint-staged": "^4.1.3",
