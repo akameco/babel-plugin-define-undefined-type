@@ -28,6 +28,7 @@
     "*.js": ["prettier", "lint", "test", "git add"],
     "*.json": ["prettier", "git add"]
   },
+  "main": "lib/index.js",
   "files": ["lib"],
   "keywords": [
     "babel",
