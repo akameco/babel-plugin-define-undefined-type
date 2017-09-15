@@ -71,6 +71,75 @@ type INCREMENT = "INCREMENT";
 type Action = { type: ADD } | { type: INCREMENT };
 ```
 
+## Options
+
+#### usePrefix
+
+type: `boolean` <br>
+Default: `false`
+
+Prefix of the file path.
+
+#### Example
+
+.babelrc
+
+```json
+{
+  "plugins": ["define-undefined-type", {"usePrefix": true}]
+}
+```
+
+#### In:
+
+```js
+type Action = { type: ADD } | { type: INCREMENT }
+```
+
+#### Out:
+
+```js
+type ADD = "app/counter/ADD";
+type INCREMENT = "app/counter/INCREMENT";
+type Action = { type: ADD } | { type: INCREMENT };
+```
+
+#### removePrefix
+
+type: `string` <br>
+Default: `''`
+
+#### Example
+
+.babelrc
+
+```json
+{
+  "plugins": [
+    "define-undefined-type",
+    {
+      "usePrefix": true,
+      "removePrefix": "app"
+    }
+  ]
+}
+```
+
+
+#### In:
+
+```js
+type Action = { type: ADD } | { type: INCREMENT }
+```
+
+#### Out:
+
+```js
+type ADD = "counter/ADD";
+type INCREMENT = "counter/INCREMENT";
+type Action = { type: ADD } | { type: INCREMENT };
+```
+
 ## License
 
 MIT © [akameco](http://akameco.github.io)
