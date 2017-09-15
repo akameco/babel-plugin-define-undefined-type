@@ -30,9 +30,9 @@ const typeDefineBuilder = template(`type NAME = VALUE`, babylonOpts)
 const KEY = Symbol('defined-undefined-type')
 
 function getPrefix({ opts: { filename } }: File, removePrefix: string = '') {
-  const file = p.relative(process.cwd(), filename)
+  const file = p.relative(p.join(process.cwd(), removePrefix), filename)
   const dirname = p.dirname(file)
-  return (dirname + '/').replace(new RegExp(`^${removePrefix}/`), '')
+  return dirname + '/'
 }
 
 const createDefineAST = (name: string, value: string) =>
