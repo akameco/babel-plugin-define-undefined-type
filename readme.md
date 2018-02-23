@@ -1,4 +1,6 @@
 # babel-plugin-define-undefined-type
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/akameco/babel-plugin-define-undefined-type.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/akameco/babel-plugin-define-undefined-type.svg?branch=master)](https://travis-ci.org/akameco/babel-plugin-define-undefined-type)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
